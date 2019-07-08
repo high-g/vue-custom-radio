@@ -1,14 +1,16 @@
 <template>
   <div id="app">
-    test
+    <VueRadioCustom radioType="simple" />
   </div>
 </template>
 
 <script>
+import VueRadioCustom from '@/VueRadioCustom'
 
 export default {
   name: 'app',
   components: {
+    VueRadioCustom
   },
   data() {
     return {
