@@ -1,4 +1,4 @@
-vue-radio-custom
+vue-custom-radio
 ====
 ラジオボタンを利用したUIを複数パターン備えているコンポーネントです。
 
