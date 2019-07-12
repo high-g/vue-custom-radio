@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <VueRadioCustom radioType="simple" />
+    <VueRadioCustom radioType="simple" name="test" value="1" checked>test1</VueRadioCustom>
+    <VueRadioCustom radioType="simple" name="test" value="2">test2</VueRadioCustom>
+    <VueRadioCustom radioType="simple" name="test" value="3">test3</VueRadioCustom>
   </div>
 </template>
 

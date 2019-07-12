@@ -2,7 +2,7 @@
   <div>
     <template v-if="radioType === 'simple'">
       <label class="simple">
-        <input type="radio" :name="name" :value="value" />
+        <input type="radio" :name="name" :value="value" :checked="checked" />
         <span><slot></slot></span>
       </label>
     </template>
@@ -36,6 +36,7 @@ export default {
     radioType: String,
     name: String, // switchのときは、カンマ区切り
     value: String,
+    checked: Boolean,
 
     // switch
     keywords: String, // カンマ区切り
@@ -56,20 +57,19 @@ export default {
 
 <style lang="scss" scoped>
 .simple {
-  label {
-    margin-bottom: 0.8rem;
-    font-size: 1.4rem;
-    line-height: 2.5rem;
-    cursor: pointer;
-    position: relative;
-    display: block;
-    user-select: none;
-  }
+  font-size: 1rem;
+  line-height: 2rem;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  user-select: none;
+
   span {
     padding-left: 2.8rem;
     background-color: #fff;
     position: relative;
     display: block;
+    text-align: left;
 
     &::before {
       content: '';
@@ -78,8 +78,8 @@ export default {
       top: 0.4rem;
       border: 0.1rem solid #fff;
       border-radius: 50%;
-      width: 1.7rem;
-      height: 1.7rem;
+      width: 1.3rem;
+      height: 1.3rem;
     }
 
     &::after {
