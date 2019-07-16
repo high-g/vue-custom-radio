@@ -1,18 +1,62 @@
 <template>
   <div id="app">
-    <VueRadioCustom radioType="simple" name="test" value="1" checked>test1</VueRadioCustom>
-    <VueRadioCustom radioType="simple" name="test" value="2">test2</VueRadioCustom>
-    <VueRadioCustom radioType="simple" name="test" value="3">test3</VueRadioCustom>
+    <h1>Custom Radio</h1>
+
+    <div class="mb70">
+      <h2>Simple Radio</h2>
+      <VueCustomRadio
+        radioType="simple"
+        keywords="test1,test2,test3"
+        values="1,2,3"
+        checkStr="1"
+        name="test1"
+        bgcolor="red"
+      />
+    </div>
+
+    <div class="mb70">
+      <h2>Switch Radio</h2>
+      <VueCustomRadio
+        radioType="switch"
+        keywords="ON,OFF"
+        values="1,0"
+        checkStr="0"
+        name="test2"
+        width="14rem"
+        class="mb20"
+      />
+      <VueCustomRadio
+        radioType="switch"
+        keywords="男性,女性"
+        values="man,woman"
+        checkStr="man"
+        name="sex"
+        width="300px"
+        class="mb20"
+      />
+      <VueCustomRadio
+        radioType="switch"
+        keywords="グー,チョキ,パー"
+        values="g,c,p"
+        checkStr="c"
+        name="janken"
+        width="500px"
+      />
+    </div>
+
+    <div class="mb70">
+      <h2>Toggle Radio</h2>
+      <VueCustomRadio radioType="toggle" name="test3" />
+    </div>
   </div>
 </template>
 
 <script>
-import VueRadioCustom from '@/VueRadioCustom'
+import VueCustomRadio from './VueCustomRadio'
 
 export default {
-  name: 'app',
   components: {
-    VueRadioCustom
+    VueCustomRadio
   },
   data() {
     return {
@@ -25,7 +69,6 @@ export default {
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  text-align: center;
   color: #2c3e50;
 }
 .mb10 {margin-bottom: 10px;}
@@ -38,14 +81,5 @@ export default {
 .mb80 {margin-bottom: 80px;}
 .mb90 {margin-bottom: 90px;}
 .mb100 {margin-bottom: 100px;}
-h1 {
-  color: #fff;
-  margin-bottom: 30px;
-}
-h2 {
-  color: #fff;
-}
-hr {
-  margin: 100px auto;
-}
+
 </style>
