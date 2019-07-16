@@ -232,6 +232,7 @@ export default {
     .text {
       position: absolute;
       top: -7px;
+      left: 45px;
       line-height: 1;
     }
 
@@ -247,7 +248,6 @@ export default {
     }
 
     &::before {
-      left: 45px;
       width: 37px;
       height: 20px;
       border-radius: 0.85rem;
@@ -255,7 +255,7 @@ export default {
       border: 1px solid rgba(92, 84, 92, 0.24);
     }
     &::after {
-      left: 48px;
+      left: 3px;
       width: 16px;
       height: 16px;
       border-radius: 50%;
@@ -271,7 +271,7 @@ export default {
         background-color: #7d5e8e;
       }
       &::after {
-        left: 65px;
+        left: 20px;
       }
     }
   }
