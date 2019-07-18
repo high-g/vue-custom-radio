@@ -6,11 +6,12 @@
       <h2>Simple Radio</h2>
       <VueCustomRadio
         radioType="simple"
-        keywords="test1,test2,test3"
+        keywords="テスト1,test2,test3"
         values="1,2,3"
         checkStr="1"
         name="test1"
         bgcolor="red"
+        @emitRadio="onRadioSimple"
       />
     </div>
 
@@ -24,6 +25,7 @@
         name="test2"
         width="14rem"
         class="mb20"
+        @emitRadio="onRadioSwitch"
       />
       <VueCustomRadio
         radioType="switch"
@@ -33,6 +35,7 @@
         name="sex"
         width="300px"
         class="mb20"
+        @emitRadio="onRadioSwitch"
       />
       <VueCustomRadio
         radioType="switch"
@@ -41,12 +44,30 @@
         checkStr="c"
         name="janken"
         width="500px"
+        @emitRadio="onRadioSwitch"
       />
     </div>
 
     <div class="mb70">
       <h2>Toggle Radio</h2>
-      <VueCustomRadio radioType="toggle" name="test3" />
+      <VueCustomRadio
+        radioType="toggle"
+        name="test3"
+        keywords="ON,OFF"
+        values="1,0"
+        checkStr="0"
+        class="mb20"
+        @emitRadio="onRadioToggle"
+      />
+
+      <VueCustomRadio
+        radioType="toggle"
+        name="test4"
+        keywords="すき,きらい"
+        :checkToggle="true"
+        :jp="true"
+        @emitRadio="onRadioToggle"
+      />
     </div>
   </div>
 </template>
@@ -62,13 +83,24 @@ export default {
     return {
 
     }
+  },
+  methods: {
+    onRadioSimple(arg) {
+      console.log('onRadioSimple', arg)
+    },
+    onRadioSwitch(arg) {
+      console.log('onRadioSwitch', arg)
+    },
+    onRadioToggle(arg) {
+      console.log('onRadioToggle', arg)
+    }
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
   color: #2c3e50;
 }
 .mb10 {margin-bottom: 10px;}

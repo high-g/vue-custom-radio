@@ -1,29 +1,31 @@
 <template>
   <div>
     <template v-if="radioType === 'simple'">
-      <div class="simple">
-        <label class="simple" v-for="(item, index) in createKeywordObj" :key="index">
+      <div>
+        <label class="simple" v-for="(item, index) in obj" :key="index">
           <input
             type="radio"
             :id="index"
             :name="name"
             :value="item.value"
             :checked="checkStr === item.value"
+            @click="emitSimple(item)"
           />
-          <span>{{ item.label}}</span>
+          <span>{{ item.label }}</span>
         </label>
       </div>
     </template>
 
     <template v-if="radioType === 'switch'">
       <div class="switch" :style="switchStyle">
-        <div class="item" v-for="(item, index) in createKeywordObj" :key="index">
+        <div class="item" v-for="(item, index) in obj" :key="index">
           <input
             type="radio"
             :id="index"
             :name="name"
             :value="item.value"
             :checked="checkStr === item.value"
+            @click="emitSwitch(item)"
           />
           <label :for="index">{{ item.label }}</label>
         </div>
@@ -32,8 +34,8 @@
 
     <template v-if="radioType === 'toggle'">
       <label class="toggle">
-        <input type="radio" :name="name" @click="toggleAction" :checked="check" />
-        <span class="toggle__area"><span class="text">{{ strOnOff }}</span></span>
+        <input type="radio" :name="name" @click="toggleAction()" :checked="check" />
+        <span class="toggle__area"><span class="text" :style="toggleStyle()">{{ strOnOff }}</span></span>
       </label>
     </template>
   </div>
@@ -51,17 +53,37 @@ export default {
     values: String, // カンマ区切り
 
     // switch
-    width: String
+    width: String,
+
+    // toggle
+    jp: Boolean,
+    checkToggle: Boolean
   },
   data() {
     return {
-      check: false
+      check: false,
+      obj: {},
+      arr: []
     }
   },
   computed: {
     switchStyle() {
       return `width: ${this.width}`
     },
+    strOnOff() {
+      if (this.check) {
+        return this.arr[0]
+      } else {
+        return this.arr[1]
+      }
+    }
+  },
+  created() {
+    this.obj = this.createKeywordObj()
+    this.arr = this.keywords.split(',')
+    this.check = this.checkToggle
+  },
+  methods: {
     createKeywordObj() {
       const arr = this.keywords.split(',')
       const arrValue = this.values ? this.values.split(',') : []
@@ -83,20 +105,22 @@ export default {
       }
       return obj
     },
-    strOnOff() {
-      if (this.check) {
-        return 'ON'
-      } else {
-        return 'OFF'
-      }
-    }
-  },
-  created() {
-  },
-  methods: {
     toggleAction() {
       this.check = !this.check
-    }
+      this.$emit('emitRadio', this.check)
+    },
+    toggleStyle() {
+      if(this.jp) {
+        return 'writing-mode: vertical-lr'
+      }
+      return ''
+    },
+    emitSimple(arg) {
+      this.$emit('emitRadio', arg)
+    },
+    emitSwitch(arg) {
+      this.$emit('emitRadio', arg)
+    },
   }
 }
 </script>
@@ -223,6 +247,7 @@ export default {
   display: block;
   user-select: none;
   cursor: pointer;
+  height: 22px;
 
   .toggle__area {
     position: relative;
