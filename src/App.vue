@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Custom Radio</h1>
 
-    <div class="mb70">
+    <div class="mb50">
       <h2>Simple Radio</h2>
       <VueCustomRadio
         radioType="simple"
@@ -15,7 +15,7 @@
       />
     </div>
 
-    <div class="mb70">
+    <div class="mb50">
       <h2>Switch Radio</h2>
       <VueCustomRadio
         radioType="switch"
@@ -51,7 +51,7 @@
       />
     </div>
 
-    <div class="mb50">
+    <div>
       <h2>Toggle Radio</h2>
       <VueCustomRadio
         radioType="toggle"
