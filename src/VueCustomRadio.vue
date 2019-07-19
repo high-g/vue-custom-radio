@@ -175,6 +175,10 @@ export default {
     bottom: 0;
     right: 0;
     margin: auto;
+    &:checked + span::before,
+    &:checked + span::after {
+      transition: all 0.2s ease-out 0s;
+    }
 
     &:checked + span::before {
       background-color: var(--color);
