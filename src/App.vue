@@ -10,7 +10,7 @@
         values="1,2,3"
         checkStr="1"
         name="test1"
-        bgcolor="red"
+        color="#6633cc"
         @emitRadio="onRadioSimple"
       />
     </div>
@@ -25,6 +25,7 @@
         name="test2"
         width="14rem"
         class="mb20"
+        color="#4169e1"
         @emitRadio="onRadioSwitch"
       />
       <VueCustomRadio
@@ -35,6 +36,7 @@
         name="sex"
         width="300px"
         class="mb20"
+        color="crimson"
         @emitRadio="onRadioSwitch"
       />
       <VueCustomRadio
@@ -44,11 +46,12 @@
         checkStr="c"
         name="janken"
         width="500px"
+        color="darkorange"
         @emitRadio="onRadioSwitch"
       />
     </div>
 
-    <div class="mb70">
+    <div class="mb50">
       <h2>Toggle Radio</h2>
       <VueCustomRadio
         radioType="toggle"
@@ -64,6 +67,7 @@
         radioType="toggle"
         name="test4"
         keywords="すき,きらい"
+        color="blue"
         :checkToggle="true"
         :jp="true"
         @emitRadio="onRadioToggle"

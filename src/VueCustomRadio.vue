@@ -2,7 +2,7 @@
   <div>
     <template v-if="radioType === 'simple'">
       <div>
-        <label class="simple" v-for="(item, index) in obj" :key="index">
+        <label class="simple" v-for="(item, index) in obj" :key="index" :style="styles">
           <input
             type="radio"
             :id="index"
@@ -17,7 +17,7 @@
     </template>
 
     <template v-if="radioType === 'switch'">
-      <div class="switch" :style="switchStyle">
+      <div class="switch" :style="styles">
         <div class="item" v-for="(item, index) in obj" :key="index">
           <input
             type="radio"
@@ -33,7 +33,7 @@
     </template>
 
     <template v-if="radioType === 'toggle'">
-      <label class="toggle">
+      <label class="toggle" :style="styles">
         <input type="radio" :name="name" @click="toggleAction()" :checked="check" />
         <span class="toggle__area"><span class="text" :style="toggleStyle()">{{ strOnOff }}</span></span>
       </label>
@@ -47,7 +47,7 @@ export default {
     // common
     radioType: String,
     name: String, // switchのときは、カンマ区切り
-    bgcolor: String, // ONの時のラジオ色
+    color: String, // ON時のラジオ色
     keywords: String, // カンマ区切り
     checkStr: String, // 初期チェックする値
     values: String, // カンマ区切り
@@ -67,8 +67,11 @@ export default {
     }
   },
   computed: {
-    switchStyle() {
-      return `width: ${this.width}`
+    styles() {
+      return {
+        'width': this.width,
+        '--color': this.color
+      }
     },
     strOnOff() {
       if (this.check) {
@@ -127,6 +130,8 @@ export default {
 
 <style lang="scss" scoped>
 .simple {
+  --color: #333;
+
   font-size: 14px;
   cursor: pointer;
   position: relative;
@@ -172,7 +177,7 @@ export default {
     margin: auto;
 
     &:checked + span::before {
-      background-color: #7d5e8e;
+      background-color: var(--color);
     }
     &:checked + span::after {
       background-color: #fff;
@@ -181,6 +186,8 @@ export default {
 }
 
 .switch {
+  --color: #333;
+
   width: auto;
   background-color: #efecef;
   border: 1px solid rgba(92, 84, 92, 0.24);
@@ -236,13 +243,15 @@ export default {
       background-color: #fff;
 
       &::before {
-        background-color: #7d5e8e;
+        background-color: var(--color);
       }
     }
   }
 }
 
 .toggle {
+  --color: #333;
+
   position: relative;
   display: block;
   user-select: none;
@@ -293,7 +302,7 @@ export default {
 
     &:checked + .toggle__area {
       &::before {
-        background-color: #7d5e8e;
+        background-color: var(--color);
       }
       &::after {
         left: 20px;
