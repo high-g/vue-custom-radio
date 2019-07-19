@@ -56,8 +56,8 @@ export default {
     width: String,
 
     // toggle
-    jp: Boolean,
-    checkToggle: Boolean
+    jp: String,
+    checkToggle: String
   },
   data() {
     return {

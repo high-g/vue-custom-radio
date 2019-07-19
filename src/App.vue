@@ -68,8 +68,8 @@
         name="test4"
         keywords="すき,きらい"
         color="blue"
-        :checkToggle="true"
-        :jp="true"
+        checkToggle="1"
+        jp="1"
         @emitRadio="onRadioToggle"
       />
     </div>
