@@ -3,7 +3,7 @@
     <h1>Custom Radio</h1>
 
     <div class="mb50">
-      <h2>Simple Radio</h2>
+      <h2>Simple</h2>
       <VueCustomRadio
         radioType="simple"
         keywords="テスト1,test2,test3"
@@ -16,7 +16,7 @@
     </div>
 
     <div class="mb50">
-      <h2>Switch Radio</h2>
+      <h2>Switch</h2>
       <VueCustomRadio
         radioType="switch"
         keywords="ON,OFF"
@@ -52,7 +52,7 @@
     </div>
 
     <div>
-      <h2>Toggle Radio</h2>
+      <h2>Toggle</h2>
       <VueCustomRadio
         radioType="toggle"
         name="test3"
